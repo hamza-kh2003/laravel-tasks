@@ -1,0 +1,38 @@
+1- What is Laravel?
+Laravel is an open-source PHP web application framework, laravel follows the Model-View-Controller (MVC) , Laravel is built in PHP and runs only on PHP.
+
+2. Why do developers use Laravel?
+Strong database handling (Eloquent ORM): Supports multiple databases , Lets you write logic instead of raw SQL, You can switch databases with minimal changes.
+MVC structure (organized code): Separation of concerns, Clean architecture, Scalable project structure
+Support Queues, jobs, and scheduling
+Community : there are many tutorials and documentation to learn through them
+
+3. What is the difference between Laravel and plain PHP?
+Structure & Organization:
+Plain PHP You decide everything: Folder structure, File naming but Laravel gives you MVC architecture , Clear folder structure .
+Database Access:
+Plain PHP You write SQL manually and You must handle: SQL injection, Errors, Connections but Laravel Use Eloquent ORM and handle these points;
+
+4. List at least 5 key features of Laravel?
+Language Support: PHP
+MVC Framework (Model-View-Controller)
+Object Relational Mapping: through Eloquent ORM for database interaction.
+Testing: Support unit testing
+Database Migration: Simplifies the deployment and updating of applications.
+Caching: Built-in caching support to optimize performance.
+Form Validation: Robust form validation methods are integrated.
+
+5. What is Composer, and why does Laravel depend on it?
+Composer is a tool for PHP that helps you install and manage libraries (packages) your project needs.
+Laravel depends on Composer because Laravel is made of many packages and components. 
+
+-------------------------------------------------------------------------------------------
+
+1. What is Artisan in Laravel?
+Artisan Console is the command line interface included with Laravel, That means artisan help you to do many handful things using artisan command
+
+2. Why is Artisan important?
+Speeds up development => You can generate code automatically: controllers, models, migrations, etc.
+Manages the application => Clear cache, config, and routes:
+Runs background tasks => Start queue workers or schedule jobs.
+
