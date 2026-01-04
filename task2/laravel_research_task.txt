@@ -1,0 +1,178 @@
+
+1) Laravel Folder Structure
+
+app/
+- Contains the core application logic
+- Includes models, controllers, middleware, and other backend code
+
+routes/
+- Defines all application routes (URLs)
+- Connects URLs to controllers
+
+resources/
+- Contains Blade view files and frontend assets
+- Used for user interface and presentation
+
+public/
+- Publicly accessible folder
+- Entry point of the application (index.php)
+- Holds compiled CSS, JS, and images
+
+config/
+- Contains configuration files
+- Manages settings like database, mail, and cache
+
+database/
+- Contains migrations, seeders, and factories
+- Manages database structure and sample data
+
+
+MVC Location in Laravel
+- Model: app/Models
+- View: resources/views
+- Controller: app/Http/Controllers
+
+
+--------------------------------------------------
+
+
+2) Artisan CLI Basics
+
+What is Artisan?
+- Artisan is Laravel’s command-line interface (CLI)
+
+What is it used for?
+- Automates common development tasks
+- Helps generate files, manage databases, and maintain the application
+
+Three Artisan Commands
+
+php artisan serve
+- Starts a local development server
+
+php artisan make:controller UserController
+- Creates a new controller file
+
+php artisan migrate
+- Runs database migrations to update tables
+
+
+--------------------------------------------------
+
+
+3) Understanding the MVC Pattern
+
+What is MVC?
+- MVC stands for Model, View, Controller
+- It is a design pattern that separates responsibilities
+
+Roles
+
+Model
+- Handles data and database logic
+
+View
+- Displays data to the user
+
+Controller
+- Handles requests and connects models with views
+
+Request Flow
+
+Request → Route → Controller → View → Response
+
+Explanation:
+- The user sends a request
+- The route determines which controller to use
+- The controller processes logic and data
+- The view displays the result
+- The response is sent back to the browser
+
+
+--------------------------------------------------
+
+
+4) Routes (Understanding Only)
+
+Where routes are defined
+- routes/web.php for web pages
+- routes/api.php for APIs
+
+What a route does
+- Listens for a URL
+- Directs the request to a controller method
+
+Example Route
+Route::get('/users', [UserController::class, 'index']);
+
+Explanation
+- URL handled: /users
+- Controller: UserController
+- Method: index
+
+
+--------------------------------------------------
+
+
+5) Blade Basics (Syntax & Structure)
+
+What is Blade?
+- Blade is Laravel’s template engine
+
+Blade Files
+- Use the .blade.php extension
+- Stored in resources/views
+
+Displaying Data
+- {{ }} is used to display variables safely
+
+How data is shown
+- Controller sends data
+- Blade view receives it
+- Data is displayed using {{ }}
+
+
+--------------------------------------------------
+
+
+6) Blade Layouts (Understanding Concept)
+
+What is a Master Layout?
+- A main template that contains common page structure
+
+Why We Use Blade Layout Directives
+
+@extends
+- Connects a view to a master layout
+
+@section
+- Defines content for a specific section
+
+@yield
+- Placeholder in the master layout
+
+@include
+- Inserts reusable view parts like header or footer
+
+How layouts help
+- Avoid repeating code
+- Organize views
+- Make maintenance easier
+
+
+--------------------------------------------------
+
+
+7) Blade Conditionals & Loops (Basic Idea)
+
+Conditionals (@if)
+- Used to display content based on a condition
+- Example use: show content only if a user is logged in
+
+Loops (@foreach)
+- Used to display repeated data
+- Example use: loop through a list of users
+
+Why They Are Used
+- Conditionals control when content appears
+- Loops handle displaying multiple items dynamically
