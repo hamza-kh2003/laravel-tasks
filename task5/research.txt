@@ -1,0 +1,142 @@
+TASK1)
+
+-Why does Laravel use the .env file?
+
+Laravel uses the .env file to store environment-specific configuration values such as database credentials, API keys, and application settings.
+This approach improves security by keeping sensitive information out of the source code and allows the same application to run in different environments (local, staging, production) without modifying the codebase.
+
+-What happens if the database name or credentials are incorrect?
+
+If the database configuration is incorrect, Laravel will fail to establish a connection with the database.
+
+If the database name does not exist, an error such as “Unknown database” will occur.
+
+If the username or password is incorrect, the connection will be rejected with an “Access denied” error.
+
+In both cases, database-related operations such as migrations will fail until the correct credentials are provided.
+
+TASK2)-----------------------------------------------------------------------
+
+-How does Laravel know which migrations to run?
+
+Laravel keeps track of executed migrations using a database table called migrations.
+When the php artisan migrate command is executed, Laravel checks this table and compares it with the migration files located in the database/migrations directory.
+Only migrations that have not been recorded in the migrations table are executed, and they are run in order based on their timestamps.
+
+
+What happens when you rollback a migration?
+
+When the php artisan migrate:rollback command is executed, Laravel reverses the most recent batch of migrations.
+It does this by executing the down() method of each migration in that batch and removing their records from the migrations table.
+This allows developers to safely undo recent database changes.
+
+
+TASK3)-----------------------------------------------------------------------
+
+-What each command does?
+
+php artisan migrate
+Runs only the pending migrations that have not been executed yet. Laravel checks the migrations table and applies new migrations in order.
+
+php artisan migrate:rollback
+Reverts the most recent batch of migrations by executing the down() method for each one and removing their records from the migrations table.
+
+php artisan migrate:refresh
+Rolls back all migrations and then runs them again from the beginning. This rebuilds the database schema using the migration files.
+
+php artisan migrate:fresh
+Drops all database tables and then runs all migrations again. It does not rely on the down() methods.
+
+-When to use refresh?
+
+Use migrate:refresh during development when:
+
+You want to rebuild the database schema using migration logic (up() and down()).
+
+You have many schema changes and want a clean rebuild while respecting migration rules.
+
+You want to optionally reseed the database using --seed.
+
+-When to use fresh?
+
+Use migrate:fresh when:
+
+You need a completely clean database as quickly as possible.
+
+Existing data is not important.
+
+You want to reset everything without relying on rollback logic.
+
+-Which command is more destructive and why?
+
+php artisan migrate:fresh is the most destructive command because it drops all database tables directly, causing all data to be permanently deleted.
+Unlike refresh, it does not use the down() methods and performs a full reset of the database structure.
+
+
+TASK4)-----------------------------------------------------------------------
+
+-When to use nullable?
+
+Use nullable() when:
+
+The field is optional.
+
+Not all records are required to have a value for that column.
+
+Examples include descriptions, optional notes, or secondary information
+
+
+
+-When to use unique?
+
+Use unique() when:
+
+Each record must have a distinct value.
+
+The column represents an identifier such as an email, username, or product name.
+
+
+TASK5)-----------------------------------------------------------------------
+
+-Why is $fillable important?
+
+The $fillable property defines which attributes are mass assignable.
+It protects the application from mass assignment vulnerabilities by allowing only specified fields to be inserted or updated.
+
+-What happens if $fillable is not defined?
+
+If $fillable is not defined, Laravel blocks mass assignment operations and throws a MassAssignmentException.
+This prevents unintended or malicious data from being written to the database.
+
+
+
+TASK6)-----------------------------------------------------------------------
+
+-Why is this approach commonly used?
+
+This approach is commonly used because it:
+
+Saves development time
+
+Reduces naming inconsistencies
+
+Ensures proper linkage between models and tables
+
+Follows Laravel’s convention-over-configuration philosophy
+
+
+-When is it better than creating them separately?
+
+Creating a model and migration together is better when:
+
+Building a new feature from scratch
+
+Creating a new table with its corresponding model
+
+Developing standard CRUD functionality
+
+Creating them separately is more suitable when:
+
+A model is needed for an existing table
+
+Only schema changes are required without a new model
