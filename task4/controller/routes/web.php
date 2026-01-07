@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,3 +37,15 @@ Route::get('/contact/result', [ContactController::class,'result'])->name('contac
 
 
 Route::resource('feedback',FeedbackController::class);
+
+
+Route::get('/page/home', [PageController::class,'home'])->name('page.home');
+Route::get('/page/about', [PageController::class,'about'])->name('page.about');
+Route::get('/page/contact', [PageController::class,'contact'])->name('page.contact');
+
+Route::get('/page/user/{name}', [PageController::class,'user'])->name('page.user');
+
+Route::get('/page/product', [PageController::class,'product'])->name('page.product');
+Route::get('/page/product/{product}', [PageController::class,'details'])->name('page.details');
+
+Route::resource('products',ProductController::class);
